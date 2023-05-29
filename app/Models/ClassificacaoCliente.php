@@ -9,6 +9,8 @@ class ClassificacaoCliente extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['tipo'];
+
     public function cliente()
     {
         return $this->belongsTo(Cliente::class);
