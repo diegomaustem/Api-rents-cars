@@ -31,7 +31,7 @@ class ClienteController extends Controller
         $cliente = $this->cliente->find($id);
 
         if(empty($cliente)) {
-            return response()->json(['msg'=> 'Cliente não encontrada.'], 404);
+            return response()->json(['msg'=> 'Cliente não encontrado.'], 404);
         }
 
         return response()->json($cliente, 200);
