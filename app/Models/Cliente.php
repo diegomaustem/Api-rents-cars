@@ -9,6 +9,8 @@ class Cliente extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['cpf','nome','idade','email','classificacao_cliente_id'];
+
     public function classificacaoCliente()
     {
         return $this->hasOne(ClassificacaoCliente::class);
