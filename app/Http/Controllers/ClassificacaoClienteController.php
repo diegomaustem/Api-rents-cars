@@ -22,6 +22,8 @@ class ClassificacaoClienteController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate($this->classificacaoCliente->rules(), $this->classificacaoCliente->feedback());
+
         $classificacao = ClassificacaoCliente::create($request->all());
 
         return response()->json($classificacao, 201);

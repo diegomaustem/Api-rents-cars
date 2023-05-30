@@ -11,6 +11,20 @@ class ClassificacaoCliente extends Model
 
     protected $fillable = ['tipo'];
 
+    public function rules()
+    {
+        return [
+            'tipo'   => 'required'
+        ];
+    }
+
+    public function feedback()
+    {
+        return [
+            'required'   => 'O campo :attribute é obrigatório.'
+        ];
+    }
+
     public function cliente()
     {
         return $this->belongsTo(Cliente::class);
