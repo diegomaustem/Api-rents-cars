@@ -21,6 +21,8 @@ class ClienteController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate($this->cliente->rules(), $this->cliente->feedback());
+
         $cliente = Cliente::create($request->all());
 
         return response()->json($cliente, 201);
