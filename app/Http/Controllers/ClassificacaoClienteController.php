@@ -10,13 +10,11 @@ class ClassificacaoClienteController extends Controller
     public function __construct(ClassificacaoCliente $classificacaoCliente)
     {
         $this->classificacaoCliente = $classificacaoCliente;
-
     }
 
     public function index()
     {
         $classificacoes = $this->classificacaoCliente->all();
-
         return response()->json($classificacoes, 200);
     }
 
@@ -25,7 +23,6 @@ class ClassificacaoClienteController extends Controller
         $request->validate($this->classificacaoCliente->rules(), $this->classificacaoCliente->feedback());
 
         $classificacao = ClassificacaoCliente::create($request->all());
-
         return response()->json($classificacao, 201);
     }
 
@@ -49,7 +46,6 @@ class ClassificacaoClienteController extends Controller
         }
 
         $classificacao->update($request->all());
-
         return response()->json(['msg'=> 'Classificação atualizada.'], 200);
     }
 
@@ -62,7 +58,6 @@ class ClassificacaoClienteController extends Controller
         }
 
         $classificacao->delete();
-
         return response()->json(['msg'=> 'Classificação excluida.'], 200);
     }
 }

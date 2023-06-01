@@ -15,7 +15,6 @@ class ClienteController extends Controller
     public function index()
     {
         $clientes = $this->cliente->all();
-
         return response()->json($clientes, 200);
     }
 
@@ -24,7 +23,6 @@ class ClienteController extends Controller
         $request->validate($this->cliente->rules(), $this->cliente->feedback());
 
         $cliente = Cliente::create($request->all());
-
         return response()->json($cliente, 201);
     }
 
@@ -35,7 +33,6 @@ class ClienteController extends Controller
         if(empty($cliente)) {
             return response()->json(['msg'=> 'Cliente não encontrado.'], 404);
         }
-
         return response()->json($cliente, 200);
     }
 
@@ -48,7 +45,6 @@ class ClienteController extends Controller
         }
 
         $cliente->update($request->all());
-
         return response()->json(['msg'=> 'Cliente atualizado.'], 200);
     }
 
@@ -61,7 +57,6 @@ class ClienteController extends Controller
         }
 
         $cliente->delete();
-
         return response()->json(['msg'=> 'Cliente excluido.'], 200);
     }
 }
