@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cliente;
+use App\Repositories\ClienteRepository;
 use Illuminate\Http\Request;
 
 class ClienteController extends Controller
@@ -14,8 +15,10 @@ class ClienteController extends Controller
 
     public function index()
     {
-        $clientes = $this->cliente->all();
-        return response()->json($clientes, 200);
+        $clienteRepository = new ClienteRepository($this->cliente);
+        $clienteRepository->recuperaClientes($this->cliente);
+
+        return response()->json($clienteRepository, 200);
     }
 
     public function store(Request $request)
